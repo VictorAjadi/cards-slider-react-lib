@@ -1,5 +1,5 @@
 {
-  "name": "slide-cards",
+  "name": "slidecards",
   "version": "0.1.0",
   "main": "dist/bundle.js",
   "scripts": {
