@@ -14,13 +14,20 @@ Provides navigation buttons to slide cards forward and backward.
 
 **Props**
 
+
 **array (Required)**: An array of objects representing the content of your cards. Each object should have properties like id, title, and potentially others for custom content that your CustomCard component will render.
+
 **cardNumPerView (Optional)**: Controls the number of cards displayed per view.
+
 **autoArrange (Optional, default: true)**: Enables automatic adjustment of the number of cards displayed based on screen size for a responsive layout. This overrides cardNumPerView when enabled.
+
 **buttonColor (Optional, default: '#000000')**: Sets the color of the navigation buttons.
+
 **buttonWidth (Optional, default: '54px')**: Sets the width of the navigation buttons (CSS measurement).
+
 **buttonHeight (Optional, default: '54px')**: Sets the height of the navigation buttons (CSS measurement).
-**CustomCard**: This is where you render your custom card component. It receives any props you pass within the <CustomCard> tag. Refer to the implementation of your CustomCard component for specific prop usage.
+
+**CustomCard**: This is where you render your custom card component. It receives any props you pass within the **<CustomCard>** tag. Refer to the implementation of your CustomCard component for specific prop usage.
 
 **Usage**
 Here is an example of how to use the SliderForCards component in your React application:
@@ -32,15 +39,19 @@ import {CardSlider} from './CardSlider';
 import CustomCard from './CustomCard'; **// Your custom card component**
 
 const cardData = [
+
   { id: 1, title: 'Card 1', content: 'Content 1' },
+
   { id: 2, title: 'Card 2', content: 'Content 2' },
+
   { id: 3, title: 'Card 3', content: 'Content 3' },
+
   // Add more card data here
 ];
 
 function App() {
   return (
-    
+
     <div className="App">
 
       <CardSlider
