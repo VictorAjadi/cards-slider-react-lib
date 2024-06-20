@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Overview
+The SliderForCards library is a customizable and responsive React component designed for displaying a set of cards in a sliding carousel. This library is highly flexible, allowing you to define the content, number of cards per view, and various other configurations to suit your needs.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+## Responsive Design:
+Automatically adjusts the number of cards displayed per view based on the screen size.
+## Customizable:
+Accepts custom card components and allows configuration of various properties like the number of cards per view and button colors.
+## Auto Arrangement:
+Dynamically arranges cards based on the current index, providing a seamless sliding experience.
+## Interactive Navigation:
+Provides navigation buttons to slide cards forward and backward.
 
-In the project directory, you can run:
+# Props
 
-### `npm start`
+# array (Array): 
+An array of data that will be passed to each card component.
+# CardComponent (React Component):
+A custom card component that will be rendered for each item in the array.
+# cardNumPerView (Number):
+The number of cards to display per view.
+# autoArrange (Number):
+Controls the auto arrangement of cards during sliding.
+# buttonColor (String):
+Optional. Color of the navigation buttons.
+# buttonWidth (String):
+Optional. Width of the navigation buttons.
+# buttonHeight (String):
+Optional. Height of the navigation buttons.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Usage**
+Here is an example of how to use the SliderForCards component in your React application:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+import React from 'react';
+import {CardSlider} from './CardSlider';
+import CustomCard from './CustomCard'; // Your custom card component
 
-### `npm test`
+const cardData = [
+  { id: 1, title: 'Card 1', content: 'Content 1' },
+  { id: 2, title: 'Card 2', content: 'Content 2' },
+  { id: 3, title: 'Card 3', content: 'Content 3' },
+  // Add more card data here
+];
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### function App() {
+  return (
+    <div className="App">
+      <CardSlider
+        array={cardData}
+        cardNumPerView={3} or autoArrange={true}
+        buttonColor="#ff5733"
+        buttonWidth="50px"
+        buttonHeight="50px"
+      >
+        <CustomCard additionalProp="value" />
+      </CardSlider>
+    </div>
+  );
+}
 
-### `npm run build`
+export default App; 
+# Details
+# Dynamic Screen Size Handling
+The component dynamically adjusts the number of cards displayed based on the screen size. It uses breakpoints to define the number of cards per view:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Extra Small: 
+1 card
+# Small:
+2 cards
+# Medium:
+3 cards
+# Large:
+4 cards
+# Auto Arrangement
+The autoArrange prop ensures that the cards are rearranged dynamically as the user navigates through the carousel. This provides a smooth and continuous sliding experience.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Navigation Buttons
+The component includes "next" and "previous" buttons for navigating through the cards. The button color can be customized using the buttonColor prop.

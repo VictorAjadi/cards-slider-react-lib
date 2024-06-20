@@ -1,0 +1,26 @@
+/* Import Bootstrap's CSS */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* Additional custom styles for your components */
+
+.next-btn,.prev-btn{
+    transition: all 500ms ease-in-out;
+}
+.next-btn:hover,.prev-btn:hover{
+    transform: translateY(-15px);
+    box-shadow: rgba(0, 0, 0, 0.15) 3.4px 3.4px 4.2px;
+}
+.card-slider{
+  transition: all 800ms ease-in-out;
+  animation: fadeInAndMove 0.8s ease-in-out forwards;
+}
+@keyframes fadeInAndMove {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
