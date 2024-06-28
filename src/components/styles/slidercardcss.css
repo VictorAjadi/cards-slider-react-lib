@@ -2,25 +2,55 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 /* Additional custom styles for your components */
+.next>svg{
+  transition: all 500ms ease-in-out;
+}
+.next:hover>svg{
+  transform: translateY(-15px);
+  box-shadow: rgba(0, 0, 0, 0.15) 3.4px 3.4px 4.2px;
+}
+#prev>svg{
+transition: all 500ms ease-in-out;
+}
+#prev:hover>svg{
+transform: translateY(-15px);
+box-shadow: rgba(0, 0, 0, 0.15) 3.4px 3.4px 4.2px;
+}
+.card-slider-right {
+margin: auto;
+width: 95%;
+transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+animation: fadeInAndMoveRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.card-slider-left {
+margin: auto;
+width: 95%;
+transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+animation: fadeInAndMoveLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.slide-container{
+width: 95%;
+margin: auto;
+box-sizing: border-box;
+}
 
-.next-btn,.prev-btn{
-    transition: all 500ms ease-in-out;
+@keyframes fadeInAndMoveLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }  
 }
-.next-btn:hover,.prev-btn:hover{
-    transform: translateY(-15px);
-    box-shadow: rgba(0, 0, 0, 0.15) 3.4px 3.4px 4.2px;
+@keyframes fadeInAndMoveRight {
+0% {
+  opacity: 0;
+  transform: translateX(-50%);
 }
-.card-slider{
-  transition: all 800ms ease-in-out;
-  animation: fadeInAndMove 0.8s ease-in-out forwards;
+100% {
+  opacity: 1;
+  transform: translateX(0);
 }
-@keyframes fadeInAndMove {
-    0% {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
 }

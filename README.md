@@ -9,17 +9,17 @@ Automatically adjusts the number of cards displayed per view based on the screen
 Accepts custom card components and allows configuration of various properties like the number of cards per view and button colors.
 ## Auto Arrangement:
 Dynamically arranges cards based on the current index, providing a seamless sliding experience.
-#Interactive Navigation:
+## Interactive Navigation:
 Provides navigation buttons to slide cards forward and backward.
 
 **Props**
 
 
-**array (Required)**: An array of objects representing the content of your cards. Each object should have properties like id, title, and potentially others for custom content that your CustomCard component will render.
+**array (Required)**: An array of objects representing the content of your cards. Each object should be unique,this object properties are available as props in your CustomCard component.
 
 **cardNumPerView (Optional)**: Controls the number of cards displayed per view.
 
-**autoArrange (Optional, default: true)**: Enables automatic adjustment of the number of cards displayed based on screen size for a responsive layout. This overrides cardNumPerView when enabled.
+**autoArrange (Optional, default: false)**: Enables automatic adjustment of the number of cards displayed based on screen size for a responsive layout. This overrides cardNumPerView when enabled.
 
 **buttonColor (Optional, default: '#000000')**: Sets the color of the navigation buttons.
 
@@ -29,6 +29,46 @@ Provides navigation buttons to slide cards forward and backward.
 
 **CustomCard**: This is where you render your custom card component. It receives any props you pass within the **<CustomCard>** tag. Refer to the implementation of your CustomCard component for specific prop usage.
 
+**CustomCard Example Usage**
+
+import React from 'react'
+
+import { Link } from 'react-router-dom'
+
+import '../styles/cardcss.css'
+
+function CustomCard({cardProp,additionalProp}) {
+
+  return (
+
+    <>
+
+    <div className="card p-2" style={{width: "18rem"}}>
+
+        <img className='card-img-top' src={cardProp.image} alt="" />
+
+        <div className="card-body text-start">
+
+           <button className='border-0 px-2 py-1 rounded-pill mybg-secondary text-dark'>{cardProp.title}</button>
+
+            <h5 className="card-title my-2">{cardProp.content}</h5>
+
+            <p className="card-text">By William</p>
+
+            <Link to={`/courses/${additionalProp}`} className="btn btn-primary rounded-pill">Enroll Now</Link>
+
+        </div>
+
+    </div>
+
+    </>
+
+  )
+}
+
+export default CustomCard
+
+
 **Usage**
 Here is an example of how to use the SliderForCards component in your React application:
 
@@ -36,7 +76,7 @@ import React from 'react';
 
 import {CardSlider} from './CardSlider';
 
-import CustomCard from './CustomCard'; **// Your custom card component**
+import CustomCard from './CustomCard'; 
 
 const cardData = [
 
@@ -65,17 +105,18 @@ function App() {
         buttonWidth="50px"
 
         buttonHeight="50px"
-      >
-      
-        <CustomCard additionalProp="value" />
 
-      </CardSlider>
+        CardComponent={(props) => <CustomCard {...props} additionalProp="1" />}
 
+      />
+    
     </div>
   );
 }
-
+//
 export default App; 
+
+
 ## Details
 
 **Dynamic Screen Size Handling**
