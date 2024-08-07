@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import 'bootstrap'; // Import Bootstrap's JavaScript if needed
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap's CSS
-import './styles/slidercardcss.css'
-function CardSlider({array, CardComponent, cardNumPerView,autoArrange,buttonColor,buttonWidth,buttonHeight,buttonPosition,buttonPositionGap,cardSpacing, slideTimeInterval ,allowSlidePerInterval,LeftSvgIcon,RightSvgIcon}) {
+import React, { useState, useEffect } from 'react'
+import '../styles/slidercardcss.css'
+function CardSlider({array, CardComponent, cardNumPerView,autoArrange,buttonColor,buttonWidth,buttonHeight,cutOneCardPerView,buttonPosition,buttonPositionGap,cardSpacing, slideTimeInterval ,allowSlidePerInterval,LeftSvgIcon,RightSvgIcon}) {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [screenSize, setScreenSize] = React.useState(getBreakpoint());
   const [slicedCard, setSlicedCard] = React.useState([]);
@@ -76,6 +74,10 @@ function CardSlider({array, CardComponent, cardNumPerView,autoArrange,buttonColo
         let leftResult=(((currentIndex-1)*multiply)+add)+(multiply+1);
         let rightResult=((currentIndex-1)*multiply)+add;
         let part1 = array.slice(currentIndex ? rightResult : 0, currentIndex ? leftResult : currentIndex + (autoArrange ? screenSize : cardNumPerView));
+        if(array.length<(autoArrange ? screenSize: cardNumPerView)){
+          part1=array.slice(0, currentIndex + (autoArrange? screenSize : cardNumPerView))
+          return part1
+        }
         if(rightResult>array.length-2){
           let lastElement = part1[part1.length - 1];
           let findIndex = array.lastIndexOf(lastElement);
@@ -99,7 +101,13 @@ function CardSlider({array, CardComponent, cardNumPerView,autoArrange,buttonColo
         }
         return part1;
       };
-      setSlicedCard(rearrangeFruits(currentIndex).slice(-(autoArrange ? screenSize : cardNumPerView)));
+      let rearrangeFruits2 = (currentIndex) => {
+        let part1 = array.slice(currentIndex, currentIndex+(autoArrange ? screenSize : cardNumPerView)).slice(-(autoArrange ? screenSize : cardNumPerView));
+        let part2 = array.slice(-currentIndex%1, currentIndex%1).slice(-currentIndex%1);
+        let result = part1.concat(part2);
+        return result;
+      };
+      setSlicedCard(cutOneCardPerView? rearrangeFruits2(currentIndex).slice(-(autoArrange ? screenSize : cardNumPerView)):rearrangeFruits(currentIndex).slice(-(autoArrange ? screenSize : cardNumPerView)));
     },[currentIndex,screenSize])
 
     useEffect(() => {
@@ -136,15 +144,15 @@ return (
            </div>
 
            <div 
-            className={`d-flex flex-row flex-nowrap justify-content-between align-items-center`}
+            className={`d-flex flex-row flex-nowrap justify-content-between align-items-center w-100`}
             >
-           <button id={"prev"} onClick={prevSlide} style={{paddingRight: `${buttonPositionGap}`,transform: `translate(-30px`}} className={              
+           <button id={"prev"} onClick={prevSlide} style={{paddingRight: `${buttonPositionGap}`,transform: `translate(-30px)`}} className={              
             buttonPosition=== 'middle'?
             'border-0 bg-transparent position-absolute top-50 top-50 start-50':
             buttonPosition === 'middle-bottom'?
-            'border-0 bg-transparent position-absolute top-100 start-50':
+            'border-0 bg-transparent position-absolute mt-2 top-100 start-50':
             buttonPosition === 'middle-top'?
-            'border-0 bg-transparent position-absolute top-0 pb-5 mb-3 start-50':
+            'border-0 bg-transparent position-absolute top-0 pb-5 mb-5 start-50':
             'border-0 bg-transparent position-absolute top-50 start-0 translate-middle-y'}>
               {
                 LeftSvgIcon ? <LeftSvgIcon />:
@@ -152,13 +160,13 @@ return (
               }
             
            </button>
-           <button onClick={nextSlide} style={{paddingLeft: `${buttonPositionGap}`,transform: `translate(30px`}} className={              
+           <button onClick={nextSlide} style={{paddingLeft: `${buttonPositionGap}`,transform: `translate(30px)`}} className={              
             buttonPosition=== 'middle'?
             'next border-0 bg-transparent position-absolute top-50 start-50':
             buttonPosition === 'middle-bottom'?
-            'next border-0 bg-transparent position-absolute top-100 start-50':
+            'next border-0 bg-transparent position-absolute mt-2 top-100 start-50':
             buttonPosition === 'middle-top'?
-            'next border-0 bg-transparent position-absolute top-0 pb-5 mb-3 start-50':
+            'next border-0 bg-transparent position-absolute top-0 pb-5 mb-5 start-50':
             'next border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y'}>
               {RightSvgIcon ? <RightSvgIcon />:
               <svg className=' rounded-circle' width={`${buttonWidth || '54px'}`} height={`${buttonHeight || '54px'}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM14.79 12.53L11.26 16.06C11.11 16.21 10.92 16.28 10.73 16.28C10.54 16.28 10.35 16.21 10.2 16.06C9.91 15.77 9.91 15.29 10.2 15L13.2 12L10.2 9C9.91 8.71 9.91 8.23 10.2 7.94C10.49 7.65 10.97 7.65 11.26 7.94L14.79 11.47C15.09 11.76 15.09 12.24 14.79 12.53Z" fill={`${buttonColor || '#000000'}`}></path> </g></svg>

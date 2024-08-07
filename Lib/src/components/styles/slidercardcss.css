@@ -1,0 +1,52 @@
+/* Import Bootstrap's CSS */
+/* @import '~bootstrap/dist/css/bootstrap.min.css';
+ */
+/* Additional custom styles for your components */
+.next>svg{
+  transition: all 500ms ease-in-out;
+}
+.next:hover>svg{
+  transform: translateY(-15px);
+  box-shadow: rgba(0, 0, 0, 0.15) 3.4px 3.4px 4.2px;
+}
+#prev>svg{
+transition: all 500ms ease-in-out;
+}
+#prev:hover>svg{
+transform: translateY(-15px);
+box-shadow: rgba(0, 0, 0, 0.15) 3.4px 3.4px 4.2px;
+}
+.card-slider-right {
+transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+animation: fadeInAndMoveRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.card-slider-left {
+transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+animation: fadeInAndMoveLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.slide-container{
+width: 90%;
+margin: auto;
+box-sizing: border-box;
+}
+
+@keyframes fadeInAndMoveLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }  
+}
+@keyframes fadeInAndMoveRight {
+0% {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+100% {
+  opacity: 1;
+  transform: translateX(0);
+}
+}

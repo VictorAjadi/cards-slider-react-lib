@@ -7,8 +7,8 @@
       "jsx": "react",
       "moduleResolution": "node",
       "declaration": true,
-      "declarationDir": "./dist/types",
-      "outDir": "./dist",
+      "declarationDir": "Lib/dist/types",
+      "outDir": "Lib/dist",
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
@@ -16,6 +16,6 @@
       "resolveJsonModule": true
     },
     "include": ["src/**/*"],
-    "exclude": ["node_modules", "dist"]
+    "exclude": ["node_modules", "Lib/dist"]
   }
   

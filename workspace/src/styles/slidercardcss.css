@@ -1,6 +1,6 @@
 /* Import Bootstrap's CSS */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-
+/* @import '~bootstrap/dist/css/bootstrap.min.css';
+ */
 /* Additional custom styles for your components */
 .next>svg{
   transition: all 500ms ease-in-out;
@@ -17,19 +17,15 @@ transform: translateY(-15px);
 box-shadow: rgba(0, 0, 0, 0.15) 3.4px 3.4px 4.2px;
 }
 .card-slider-right {
-margin: auto;
-width: 95%;
 transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 animation: fadeInAndMoveRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .card-slider-left {
-margin: auto;
-width: 95%;
 transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 animation: fadeInAndMoveLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .slide-container{
-width: 95%;
+width: 90%;
 margin: auto;
 box-sizing: border-box;
 }
