@@ -143,7 +143,7 @@ If you would like to contribute to this project, follow these steps:
 
 Make your changes and ensure all tests pass.
 
-Create a pull request describing your changes.
+Feel free to fork this project, submit issues, or make pull requests to enhance its functionality. Any contributions are welcome.
 
 **License**
 
